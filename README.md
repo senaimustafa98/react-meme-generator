@@ -15,11 +15,11 @@ It should allow the user to:
 
 - [X] Change the meme template (the background image)
   - [X] The meme template selector element needs to have a label element associated with it containing the text `Meme template`
-  - [ ] If the user follows the steps below, the `doge` meme template needs to be selected:
+  - [X] If the user follows the steps below, the `doge` meme template needs to be selected:
     1. Click on the label of the meme template selector
     2. Clear any existing value (eg. with a text box)
     3. Type the text `doge`
     4. Hit enter
     
-- [ ] Download the meme by clicking on a button
-  - [ ] The button element needs to contain the text `Download`
+- [X] Download the meme by clicking on a button
+  - [X] The button element needs to contain the text `Download`
