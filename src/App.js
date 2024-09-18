@@ -50,48 +50,108 @@ const handleDownload = async () => {
 
   return (
   <>
-    <h1>
-      React Meme Generator
+    <h1 style={{
+      textAlign: 'center',
+      fontSize: '5em',
+      fontFamily: 'cursive',
+      border: '5px black double',
+    }}>
+       Meme Generator
     </h1>
 
-      {/* Top Text */}
-    <div style ={{fontSize: '35px'}}>
-    <label htmlFor="topTextInput" style={{margin: '15px 30px'}}>Top text</label>
-    <input id="topTextInput" value={topText} onChange={(event) => setTopText(event.currentTarget.value)}
-      />
-    </div>
 
-      {/* Image */}
-      <div>
+    {/* Image */}
+    <div style={{
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'flex-start',
+      gap: '30px',
+      margin: 'auto 50px',
+    }}>
       <img
             src={imageUrl}
             data-test-id="meme-image"
             alt="meme picture"
-            width={350}
-            height={350}
+            width={450}
+            height={450}
+            style={{ border: '2px solid black', marginLeft: '300px' }}
             />
+
+      <button
+      onClick={handleDownload}
+      style={{
+        alignSelf: 'center',
+        justifySelf: 'center',
+        fontSize: '50px',
+        cursor: 'pointer',
+        marginRight: '500px',
+        border: '15px black solid'
+      }}>
+        Download
+      </button>
+
       </div>
 
-    {/* Bottom Text */}
-    <div style ={{fontSize: '35px'}}>
-    <label htmlFor="bottomTextInput" style={{margin: '15px 30px'}}>Bottom text</label>
-    <input id="bottomTextInput" value={bottomText} onChange={(event) => setBottomText(event.currentTarget.value)} />
-    </div>
-
       {/* template */}
-    <div style ={{fontSize: '25px'}}>
-    <label htmlFor="tempInput" style={{margin: '15px 30px'}}>Meme Template</label>
+    <div style ={{
+       fontSize: '30px',
+       marginBottom: '20px',
+      }}>
+    <label htmlFor="tempInput" style={{
+      display: 'block',
+      marginBottom: '10px',
+    }}>
+      Meme Template</label>
     <input id="tempInput" value={tempInput}
     onChange={(event) => setTempInput(event.currentTarget.value)}
     onKeyDown={handleKeyDown}
+    style={{
+      padding: '10px',
+      fontSize: '20px',
+      width: '100%',
+    }}
+
+    />
+
+    </div>
+
+      {/* Top Text */}
+    <div style ={{
+      fontSize: '35px',
+      marginBottom: '20px',
+      }}>
+    <label htmlFor="topTextInput" style={{
+      display: 'block',
+      marginBottom: '10px',
+      }}>
+      Top text</label>
+    <input id="topTextInput" value={topText} onChange={(event) => setTopText(event.currentTarget.value)}
+    style={{
+      padding: '10px',
+      fontSize: '20px',
+      width: '100%',
+    }}
+      />
+    </div>
+
+
+
+    {/* Bottom Text */}
+    <div style ={{fontSize: '35px'}}>
+    <label htmlFor="bottomTextInput" style={{marginBottom: '10px'}}>Bottom text</label>
+    <input id="bottomTextInput" value={bottomText} onChange={(event) => setBottomText(event.currentTarget.value)}
+    style={{
+      padding: '10px',
+      fontSize: '20px',
+      width: '100%',
+    }}
     />
     </div>
 
-    <button
-      onClick={handleDownload}
-      >
-        Download
-      </button>
+
+
+
 
   </>
   );
