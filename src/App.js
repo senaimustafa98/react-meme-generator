@@ -7,23 +7,7 @@ export default function App() {
   const [initial, setInitial] = useState('kk');
   const [tempInput, setTempInput] = useState(initial);
 
-  // Set the initial image URL based on the template with dependancies
-  useEffect(() => {
-    if (initial) {
-      const encodedTopText = encodeURIComponent(topText || '_').replace(
-        /%20/g,
-        '_',
-      );
-      const encodedBottomText = encodeURIComponent(bottomText || '_').replace(
-        /%20/g,
-        '_',
-      );
-      const newImageUrl = `https://memegen.link/${initial}/${encodedTopText}/${encodedBottomText}.jpg`;
-      setImageUrl(newImageUrl);
-    }
-  }, [initial, topText, bottomText]);
-
-  /* Creating a function to handle submitting via enter only */
+  // Function to handle key down events
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       event.preventDefault();
@@ -31,6 +15,7 @@ export default function App() {
     }
   };
 
+  // Function to handle image download
   const handleDownload = async () => {
     const imageUrlToFetch = imageUrl;
     console.log('Image URL for Download:', imageUrlToFetch);
@@ -59,6 +44,31 @@ export default function App() {
     }
   };
 
+  // Encoding function to handle special characters
+  function encodeToUrl(text) {
+    if (text.length === 0) return '_';
+    return text
+      .replace(/ /g, '_')
+      .replace(/\?/g, '~q')
+      .replace(/&/g, '~a')
+      .replace(/%/g, '~p')
+      .replace(/#/g, '~h')
+      .replace(/\//g, '~s')
+      .replace(/\\/g, '~b')
+      .replace(/</g, '~l')
+      .replace(/>/g, '~g');
+  }
+
+  // Set the initial image URL based on the template with dependencies
+  useEffect(() => {
+    if (initial) {
+      const encodedTopText = encodeToUrl(topText);
+      const encodedBottomText = encodeToUrl(bottomText);
+      const newImageUrl = `https://memegen.link/${initial}/${encodedTopText}/${encodedBottomText}.jpg`;
+      setImageUrl(newImageUrl);
+    }
+  }, [initial, topText, bottomText]);
+
   return (
     <>
       <h1
@@ -76,18 +86,16 @@ export default function App() {
         style={{
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'end',
-          marginRight: '400px',
+          alignItems: 'center',
         }}
       >
         <button
           onClick={handleDownload}
           style={{
-            alignSelf: 'center',
             fontSize: '50px',
             cursor: 'pointer',
             border: '15px black solid',
-            marginRight: '10em',
+            marginBottom: '20px',
           }}
         >
           Download
@@ -99,7 +107,7 @@ export default function App() {
           alt="meme"
           width="600px"
           height="600px"
-          style={{ border: '5px solid black', marginLeft: '300px' }}
+          style={{ border: '5px solid black' }}
         />
       </div>
 
@@ -107,11 +115,10 @@ export default function App() {
         style={{
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'start',
-          marginTop: '-500px',
+          alignItems: 'center',
         }}
       >
-        {/* template */}
+        {/* Template */}
         <div
           style={{
             fontSize: '30px',
