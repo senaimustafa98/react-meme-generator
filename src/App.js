@@ -56,7 +56,6 @@ export default function App() {
           textAlign: 'center',
           fontSize: '5em',
           fontFamily: 'cursive',
-
         }}
       >
         Meme Generator
@@ -67,8 +66,8 @@ export default function App() {
         style={{
           display: 'flex',
           flexDirection: 'column',
-          alignItems:'end',
-          marginRight: '400px'
+          alignItems: 'end',
+          marginRight: '400px',
         }}
       >
         <button
@@ -77,9 +76,8 @@ export default function App() {
             alignSelf: 'center',
             fontSize: '50px',
             cursor: 'pointer',
-            marginRight: '500px',
             border: '15px black solid',
-            marginRight: '10em'
+            marginRight: '10em',
           }}
         >
           Download
@@ -89,101 +87,101 @@ export default function App() {
           src={imageUrl}
           data-test-id="meme-image"
           alt="meme"
-          width= '600px'
-          height='600px'
+          width="600px"
+          height="600px"
           style={{ border: '5px solid black', marginLeft: '300px' }}
         />
-
-
       </div>
 
-
-      <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'start',
-        marginTop: '-500px'
-      }}>
-
-      {/* template */}
       <div
         style={{
-          fontSize: '30px',
-          marginBottom: '20px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'start',
+          marginTop: '-500px',
         }}
       >
-        <label
-          htmlFor="tempInput"
+        {/* template */}
+        <div
           style={{
-            display: 'block',
-            marginBottom: '10px',
+            fontSize: '30px',
+            marginBottom: '20px',
           }}
         >
-          Meme Template
-        </label>
-        <input
-          id="tempInput"
-          value={tempInput}
-          onChange={(event) => setTempInput(event.currentTarget.value)}
-          onKeyDown={handleKeyDown}
-          style={{
-            padding: '10px',
-            fontSize: '20px',
-            width: '100%',
-          }}
-        />
-      </div>
+          <label
+            htmlFor="tempInput"
+            style={{
+              display: 'block',
+              marginBottom: '10px',
+            }}
+          >
+            Meme Template
+          </label>
+          <input
+            id="tempInput"
+            value={tempInput}
+            onChange={(event) => setTempInput(event.currentTarget.value)}
+            onKeyDown={handleKeyDown}
+            style={{
+              padding: '10px',
+              fontSize: '20px',
+              width: '100%',
+            }}
+          />
+        </div>
 
-      {/* Top Text */}
-      <div
-        style={{
-          fontSize: '35px',
-          marginBottom: '20px',
-        }}
-      >
-        <label
-          htmlFor="topTextInput"
+        {/* Top Text */}
+        <div
           style={{
-            display: 'block',
-            marginBottom: '10px',
             fontSize: '35px',
+            marginBottom: '20px',
           }}
         >
-          Top text
-        </label>
-        <input
-          id="topTextInput"
-          value={topText}
-          onChange={(event) => setTopText(event.currentTarget.value)}
-          style={{
-            padding: '10px',
-            fontSize: '20px',
-            width: '60vh',
-          }}
-        />
-      </div>
+          <label
+            htmlFor="topTextInput"
+            style={{
+              display: 'block',
+              marginBottom: '10px',
+              fontSize: '35px',
+            }}
+          >
+            Top text
+          </label>
+          <input
+            id="topTextInput"
+            value={topText}
+            onChange={(event) => setTopText(event.currentTarget.value)}
+            style={{
+              padding: '10px',
+              fontSize: '20px',
+              width: '60vh',
+            }}
+          />
+        </div>
 
-      {/* Bottom Text */}
-      <div style={{ fontSize: '35px' }}>
-        <label htmlFor="bottomTextInput" style={{
-          display: 'block',
-          marginBottom: '10px',
-          fontSize: '35px',
-          }}>
-          Bottom text
-        </label>
-        <input
-          id="bottomTextInput"
-          value={bottomText}
-          onChange={(event) => setBottomText(event.currentTarget.value)}
-          style={{
-            padding: '10px',
-            fontSize: '20px',
-            width: '60vh',
-          }}
-        />
-      </div>
+        {/* Bottom Text */}
+        <div style={{ fontSize: '35px' }}>
+          <label
+            htmlFor="bottomTextInput"
+            style={{
+              display: 'block',
+              marginBottom: '10px',
+              fontSize: '35px',
+            }}
+          >
+            Bottom text
+          </label>
+          <input
+            id="bottomTextInput"
+            value={bottomText}
+            onChange={(event) => setBottomText(event.currentTarget.value)}
+            style={{
+              padding: '10px',
+              fontSize: '20px',
+              width: '60vh',
+            }}
+          />
+        </div>
       </div>
     </>
   );

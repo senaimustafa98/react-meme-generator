@@ -1,25 +1,24 @@
 * {
   font-family: 'Arial Narrow Bold', sans-serif;
 }
-button{
-  background: linear-gradient(to right, rgb(225, 84, 84) , white)
+button {
+  background: linear-gradient(to right, rgb(225, 84, 84), white);
 }
 
 button:hover {
   transform: scale(1.1);
 }
-h1{
+h1 {
   border: black 20px double;
-  background: linear-gradient(to right, rgb(225, 84, 84) , white)
+  background: linear-gradient(to right, rgb(225, 84, 84), white);
 }
-
 
 body {
   background-color: rgba(221, 194, 194, 0.647);
 }
-input{
+input {
   margin-left: 35px;
 }
-label{
+label {
   text-align: center;
 }
