@@ -114,7 +114,8 @@ export default function App() {
               display: 'block',
               marginBottom: '10px',
             }}
-          >Meme Template
+          >
+            Meme Template
           </label>
           <input
             id="tempInput"
