@@ -3,15 +3,21 @@ import { useState, useEffect } from 'react';
 export default function App() {
   const [topText, setTopText] = useState('');
   const [bottomText, setBottomText] = useState('');
-  const [imageUrl, setImageUrl] = useState('https://memegen.link/kk/_/_.jpg');
+  const [imageUrl, setImageUrl] = useState('');
   const [initial, setInitial] = useState('kk');
   const [tempInput, setTempInput] = useState(initial);
 
   // Set the initial image URL based on the template with dependancies
   useEffect(() => {
     if (initial) {
-      const encodedTopText = encodeURIComponent(topText || '_');
-      const encodedBottomText = encodeURIComponent(bottomText || '_');
+      const encodedTopText = encodeURIComponent(topText || '_').replace(
+        /%20/g,
+        '_',
+      );
+      const encodedBottomText = encodeURIComponent(bottomText || '_').replace(
+        /%20/g,
+        '_',
+      );
       const newImageUrl = `https://memegen.link/${initial}/${encodedTopText}/${encodedBottomText}.jpg`;
       setImageUrl(newImageUrl);
     }
@@ -21,13 +27,12 @@ export default function App() {
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       event.preventDefault();
-      setInitial(tempInput);
+      setInitial(tempInput.replace(/ /g, '_'));
     }
   };
 
   const handleDownload = async () => {
     const imageUrlToFetch = imageUrl;
-
     console.log('Image URL for Download:', imageUrlToFetch);
 
     try {
