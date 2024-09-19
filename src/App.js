@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 export default function App() {
   const [topText, setTopText] = useState('');
   const [bottomText, setBottomText] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
+  const [imageUrl, setImageUrl] = useState('https://memegen.link/kk/_/_.jpg');
   const [initial, setInitial] = useState('kk');
   const [tempInput, setTempInput] = useState(initial);
 
@@ -13,7 +13,6 @@ export default function App() {
       const encodedTopText = encodeURIComponent(topText || '_');
       const encodedBottomText = encodeURIComponent(bottomText || '_');
       const newImageUrl = `https://memegen.link/${initial}/${encodedTopText}/${encodedBottomText}.jpg`;
-      console.log('Encoded Image URL:', newImageUrl);
       setImageUrl(newImageUrl);
     }
   }, [initial, topText, bottomText]);
@@ -25,13 +24,17 @@ export default function App() {
       setInitial(tempInput);
     }
   };
-  /* Handling download via function */
+
   const handleDownload = async () => {
-    const corsProxy = 'https://corsproxy.io/?';
-    const proxiedImageUrl = `${corsProxy}${imageUrl}`;
+    const imageUrlToFetch = imageUrl;
+
+    console.log('Image URL for Download:', imageUrlToFetch);
 
     try {
-      const response = await fetch(proxiedImageUrl);
+      const response = await fetch(imageUrlToFetch);
+      console.log('Response Status:', response.status);
+      console.log('Response Headers:', response.headers);
+
       if (!response.ok) throw new Error('Network response was not ok.');
 
       const blob = await response.blob();
