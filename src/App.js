@@ -9,19 +9,14 @@ export default function App() {
 
   // Set the initial image URL based on the template with dependancies
   useEffect(() => {
-    if (initial && topText && bottomText) {
+    if (initial) {
       const encodedTopText = encodeURIComponent(topText || '_');
       const encodedBottomText = encodeURIComponent(bottomText || '_');
-      const encodedInitial = encodeURIComponent(initial || 'kk');
-
-      setImageUrl(
-        `https://memegen.link/${encodedInitial}/${encodedTopText}/${encodedBottomText}.jpg`,
-      );
+      const newImageUrl = `https://memegen.link/${initial}/${encodedTopText}/${encodedBottomText}.jpg`;
+      console.log('Encoded Image URL:', newImageUrl);
+      setImageUrl(newImageUrl);
     }
   }, [initial, topText, bottomText]);
-  const handleImageError = (e) => {
-    e.target.src = 'https://memegen.link/kk/_/_.jpg'; // Default fallback image URL
-  };
 
   /* Creating a function to handle submitting via enter only */
   const handleKeyDown = (event) => {
@@ -97,7 +92,6 @@ export default function App() {
           width="600px"
           height="600px"
           style={{ border: '5px solid black', marginLeft: '300px' }}
-          onError={handleImageError}
         />
       </div>
 
