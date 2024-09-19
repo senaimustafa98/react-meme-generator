@@ -9,10 +9,11 @@ export default function App() {
 
   // Set the initial image URL based on the template with dependancies
   useEffect(() => {
-    if (initial) {
+    if (initial && topText && bottomText) {
       const encodedTopText = encodeURIComponent(topText);
       const encodedBottomText = encodeURIComponent(bottomText);
       const encodedInitial = encodeURIComponent(initial);
+
       setImageUrl(
         `https://memegen.link/${encodedInitial}/${encodedTopText}/${encodedBottomText}.jpg`,
       );
