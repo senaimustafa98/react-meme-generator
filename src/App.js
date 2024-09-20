@@ -64,7 +64,7 @@ export default function App() {
     if (initial) {
       const encodedTopText = encodeToUrl(topText);
       const encodedBottomText = encodeToUrl(bottomText);
-      const newImageUrl = `https://memegen.link/${initial}/${encodedTopText}/${encodedBottomText}.jpg`;
+      const newImageUrl = `https://api.memegen.link/images/${initial}/${encodedTopText}/${encodedBottomText}.jpg`;
       setImageUrl(newImageUrl);
     }
   }, [initial, topText, bottomText]);
